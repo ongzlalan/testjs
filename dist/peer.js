@@ -514,7 +514,8 @@ Negotiator._setupListeners = function(connection, pc, pc_id) {
   var connectionId = connection.id;
   var provider = connection.provider;
 
-  // ICE CANDIDATES.
+   connection.pc = connection.peerConnection = pc;
+  // ICE CANDIDATES.`
   util.log('Listening for ICE candidates.');
   pc.onicecandidate = function(evt) {
     if (evt.candidate) {

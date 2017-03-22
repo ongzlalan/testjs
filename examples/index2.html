@@ -2,7 +2,7 @@
 <head>
   <title>PeerJS - Video chat example</title>
   <link rel="stylesheet" href="style.css">
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript" src="../dist/jquery.min.js"></script>
   <script type="text/javascript" src="../dist/peer.js"></script>
   <script>
 
@@ -44,9 +44,12 @@
     $(function(){
       $('#make-call').click(function(){
         // Initiate a call!
+        console.log("testing1");
+        console.log($('#callto-id').val());
         var call = peer.call($('#callto-id').val(), window.localStream);
-
+        console.log("test4")
         step3(call);
+                console.log("test5")
       });
 
       $('#end-call').click(function(){
