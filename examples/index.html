@@ -4,7 +4,20 @@
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="../dist/jquery.min.js"></script>
   <script type="text/javascript" src="../dist/peer.js"></script>
+
   <script>
+
+    var control_id  = getUrlVars()["robot_id"];
+    var my_id       = getUrlVars()["control_id"];
+
+    function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+      });
+      return vars;
+      }
+
 
     // Compatibility shim
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -78,6 +91,9 @@
     function step2 () {
       $('#step1, #step3').hide();
       $('#step2').show();
+      // call the controler 
+      var call = peer.call(control_id, window.localStream);
+      step3(call);
     }
 
     function step3 (call) {
